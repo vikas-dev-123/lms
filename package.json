@@ -39,6 +39,7 @@
     "lucide-react": "^0.436.0",
     "mongodb": "^6.8.0",
     "next": "14.2.7",
+    "nodemailer": "^6.9.15",
     "query-string": "^9.1.0",
     "react": "^18",
     "react-dom": "^18",
@@ -57,6 +58,7 @@
   "devDependencies": {
     "@types/mongodb": "^4.0.6",
     "@types/node": "^20.16.3",
+    "@types/nodemailer": "^6.4.15",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
