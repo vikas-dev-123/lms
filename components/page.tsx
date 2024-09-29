@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { SignInButton, SignUpButton } from "@clerk/nextjs";
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
@@ -6,13 +6,18 @@ import React, { useState } from 'react';
 import { Menu } from 'lucide-react';
 import Hero from './Hero';  
 import Benefits from "./Benifits";
-import Link from "next/link";
+import Contact from "./Contact";
 
 const Intro = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);  // State to control modal visibility
 
   const toggleNav = () => {
     setIsNavOpen(!isNavOpen);
+  };
+
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
   };
 
   return (
@@ -39,13 +44,12 @@ const Intro = () => {
               Sign Up
             </Button>
           </SignUpButton>
-          <Link
-            href={'https://docs.google.com/forms/d/e/1FAIpQLScuNQyM1n6u9f4CgBeGavfkdJHmm5VjiKeoZq6bfue9D8DsbQ/viewform?usp=sf_link'}
+          <Button
+            className='w-full py-2 text-sm text-white bg-seagreen hover:bg-[#4CAF50] rounded-md shadow-md'
+            onClick={toggleModal}  // Open the modal on click
           >
-            <Button className='w-full py-2 text-sm text-white bg-seagreen hover:bg-[#4CAF50] rounded-md shadow-md'>
-              Inquiry
-            </Button>
-          </Link>
+            Inquiry
+          </Button>
         </div>
       </nav>
 
@@ -78,13 +82,6 @@ const Intro = () => {
                   Sign Up
                 </Button>
               </SignUpButton>
-              <Link
-                href={'https://docs.google.com/forms/d/e/1FAIpQLScuNQyM1n6u9f4CgBeGavfkdJHmm5VjiKeoZq6bfue9D8DsbQ/viewform?usp=sf_link'}
-              >
-                <Button className='w-full py-2 text-sm text-white bg-seagreen hover:bg-[#4CAF50] rounded-md shadow-md'>
-                  Inquiry
-                </Button>
-              </Link>
             </div>
           </div>
         </div>
@@ -92,15 +89,31 @@ const Intro = () => {
 
       {/* Main Content */}
       <div className="flex-1 lg:ml-48 overflow-y-auto">
-        {/* Hero Section */}
         <div className="py-16 lg:py-32 w-full h-auto bg-[#D1D1D1] relative z-[1] flex flex-col items-center">
           <Hero />
         </div>
 
-        {/* Benefits Section */}
         <div className="w-full h-auto bg-[#dbd7d7] py-16 flex flex-col items-center">
           <Benefits />
         </div>
+
+       
+
+        {/* Modal for Inquiry */}
+        {isModalOpen && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 z-30 flex justify-center items-center p-4 sm:p-6">
+            <div className="bg-white rounded-2xl p- w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg shadow-lg relative">
+              <button
+                className="absolute top-2 right-2  text-gray-500 hover:text-gray-700 font-bold"
+                onClick={toggleModal}  // Close the modal
+              >
+                &#x2715;  {/* This is a simple "X" icon */}
+              </button>
+              
+              <Contact />   
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

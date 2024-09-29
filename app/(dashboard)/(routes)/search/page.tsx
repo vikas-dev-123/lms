@@ -7,6 +7,7 @@ import { getCourses } from "@/actions/get.courses";
 import { Categories } from "./_components/categories";
 import { redirect } from "next/navigation";
 import { CoursesList } from "@/components/courses.list";
+import React from "react";
 
 interface searchPageProps {
     searchParams: {
@@ -36,7 +37,8 @@ const courses = await getCourses({
 });
 
     return (
-        <>
+<div>
+    
         <div className="px-6 pt-6 md:hidden md:mb-0 block">
              <SearchInput />
         </div>
@@ -48,7 +50,8 @@ const courses = await getCourses({
             items={courses}
             />
         </div>
-        </>
+</div>
+         
     )
 }
 

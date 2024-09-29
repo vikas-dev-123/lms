@@ -7,6 +7,7 @@ import { CourseEnrollButton } from "./_components/course-enroll-button";
 import { Separator } from "@/components/ui/separator";
 import { File } from "lucide-react";
 import { CourseProgressButton } from "./_components/course-progress-button";
+import React from "react";
 
 const ChapterIdPage = async({
   params
